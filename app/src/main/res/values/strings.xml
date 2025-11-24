@@ -1,3 +1,7 @@
 <resources>
-    <string name="app_name">ParkEasyApp</string>
+    <string name="app_name">ParkEasy</string>
+    <string name="supabase_url">https://YOUR-PROJECT.supabase.co</string>
+    <string name="supabase_anon_key">YOUR-ANON-KEY</string>
+    <string name="notification_channel_id">parkeasy_channel</string>
+    <string name="notification_channel_name">ParkEasy Alerts</string>
 </resources>
