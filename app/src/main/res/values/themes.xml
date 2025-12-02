@@ -1,8 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
+    <!-- Base application theme (sempre dark) -->
     <style name="Base.Theme.ParkEasyApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <!-- Cores principais -->
+        <item name="colorPrimary">@color/pe_primary</item>
+        <item name="colorPrimaryVariant">@color/pe_primary_dark</item>
+        <item name="colorSecondary">@color/pe_secondary</item>
+
+        <!-- System bars & background -->
+        <item name="android:statusBarColor">@color/pe_background</item>
+        <item name="android:navigationBarColor">@color/pe_background</item>
+        <item name="android:windowBackground">@color/pe_background</item>
+
+        <!-- Texto por defeito -->
+        <item name="android:textColor">@color/pe_text_primary</item>
+
+        <!-- Defaults para componentes -->
+        <item name="materialButtonStyle">@style/ParkEasy.PrimaryButton</item>
+        <item name="materialCardViewStyle">@style/ParkEasy.Card</item>
     </style>
 
     <style name="Theme.ParkEasyApp" parent="Base.Theme.ParkEasyApp" />

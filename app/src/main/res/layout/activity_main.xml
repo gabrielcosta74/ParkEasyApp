@@ -1,154 +1,395 @@
 <?xml version="1.0" encoding="utf-8"?>
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    android:background="@color/pe_background">
 
     <LinearLayout
         android:orientation="vertical"
-        android:padding="16dp"
+        android:padding="20dp"
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <!-- Botão de Logout -->
-        <Button
-            android:id="@+id/btnLogout"
-            android:text="Terminar sessão"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="end"
-            android:backgroundTint="@android:color/holo_red_light"
-            android:textColor="@android:color/white"
-            android:drawableStart="@android:drawable/ic_lock_power_off"
-            android:paddingHorizontal="12dp"
-            android:layout_marginBottom="8dp" />
-
-        <ImageView
-            android:id="@+id/imgPhoto"
-            android:layout_width="match_parent"
-            android:layout_height="200dp"
-            android:background="#EEEEEE"
-            android:scaleType="centerCrop" />
-
+        <!-- HEADER -->
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:paddingTop="8dp">
-            <Button
-                android:id="@+id/btnTakePhoto"
-                android:text="Tirar foto"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/btnPickPhoto"
-                android:text="Escolher foto"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
-
-        <TextView
-            android:text="Localização"
-            android:textStyle="bold"
-            android:paddingTop="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
-
-        <LinearLayout
-            android:orientation="horizontal"
+            android:gravity="center_vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <EditText
-                android:id="@+id/etLat"
-                android:hint="Lat"
-                android:layout_width="0dp"
+
+            <!-- Título / info -->
+            <LinearLayout
+                android:orientation="vertical"
                 android:layout_weight="1"
-                android:inputType="numberDecimal"
-                android:layout_height="wrap_content" />
-            <EditText
-                android:id="@+id/etLng"
-                android:hint="Lng"
                 android:layout_width="0dp"
-                android:layout_weight="1"
-                android:inputType="numberDecimal"
-                android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/btnUseCurrent"
-                android:text="Usar atual"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content" />
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:text="Sessão de estacionamento"
+                    android:textSize="22sp"
+                    android:textStyle="bold"
+                    android:textColor="@color/pe_text_primary"
+                    android:layout_marginTop="4dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    android:text="Preenche a localização, tempo e notas da sessão."
+                    android:textSize="13sp"
+                    android:textColor="@color/pe_text_secondary"
+                    android:layout_marginTop="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+
+            <!-- Botão de perfil (ícone apenas) -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnProfile"
+                style="@style/ParkEasy.SmallPill"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:minWidth="0dp"
+                android:minHeight="0dp"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:padding="0dp"
+                android:contentDescription="Perfil"
+                android:backgroundTint="@color/pe_surface_alt"
+                app:icon="@android:drawable/ic_menu_myplaces"
+                app:iconTint="@color/pe_text_primary"
+                app:iconPadding="0dp"
+                app:rippleColor="@color/pe_primary_light" />
         </LinearLayout>
 
-        <TextView
-            android:text="Tempo de estacionamento"
-            android:textStyle="bold"
-            android:paddingTop="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
 
-        <LinearLayout
-            android:orientation="horizontal"
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="12dp" />
+
+        <!-- CARD: FOTO -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/ParkEasy.Card"
+            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
-            <Button
-                android:id="@+id/btn30"
-                android:text="30m"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/btn60"
-                android:text="60m"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content" />
-            <Button
-                android:id="@+id/btn120"
-                android:text="120m"
-                android:layout_width="0dp"
-                android:layout_weight="1"
-                android:layout_height="wrap_content" />
-        </LinearLayout>
 
-        <EditText
-            android:id="@+id/etCustomMinutes"
-            android:hint="Personalizado (min)"
-            android:inputType="number"
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/ParkEasy.SectionTitle"
+                    android:text="Foto do estacionamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    style="@style/ParkEasy.BodyLabel"
+                    android:text="Guarda uma referência visual."
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <ImageView
+                    android:id="@+id/imgPhoto"
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_marginTop="12dp"
+                    android:scaleType="centerCrop"
+                    android:background="@color/pe_surface_alt"
+                    android:contentDescription="Pré-visualização da foto do estacionamento" />
+
+                <LinearLayout
+                    android:orientation="horizontal"
+                    android:gravity="center"
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnTakePhoto"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_height="wrap_content"
+                        android:text="Tirar foto"
+                        android:textAllCaps="false"
+                        android:backgroundTint="@color/pe_primary"
+                        android:textColor="@color/white"
+                        app:icon="@android:drawable/ic_menu_camera"
+                        app:iconTint="@color/white"
+                        app:iconPadding="8dp"
+                        app:rippleColor="@color/pe_primary_light" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnPickPhoto"
+                        android:layout_width="0dp"
+                        android:layout_weight="1"
+                        android:layout_marginStart="8dp"
+                        android:layout_height="wrap_content"
+                        android:text="Galeria"
+                        android:textAllCaps="false"
+                        android:backgroundTint="@color/pe_surface_alt"
+                        android:textColor="@color/pe_text_secondary"
+                        app:icon="@android:drawable/ic_menu_gallery"
+                        app:iconTint="@color/pe_text_secondary"
+                        app:iconPadding="8dp"
+                        app:rippleColor="@color/pe_primary_light" />
+                </LinearLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- CARD: LOCALIZAÇÃO -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/ParkEasy.Card"
+            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/etOffset"
-            android:hint="Avisar (min antes)"
-            android:inputType="number"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    style="@style/ParkEasy.SectionTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Localização do carro" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        app:boxBackgroundMode="outline"
+                        app:boxStrokeColor="@color/pe_divider">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etLat"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Latitude"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/pe_text_primary"
+                            android:textColorHint="@color/pe_text_secondary" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        app:boxBackgroundMode="outline"
+                        app:boxStrokeColor="@color/pe_divider">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etLng"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:hint="Longitude"
+                            android:inputType="numberDecimal"
+                            android:textColor="@color/pe_text_primary"
+                            android:textColorHint="@color/pe_text_secondary" />
+                    </com.google.android.material.textfield.TextInputLayout>
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnUseCurrent"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:backgroundTint="@color/pe_surface_alt"
+                    android:text="Usar localização atual"
+                    android:textAllCaps="false"
+                    android:textColor="@color/pe_text_secondary"
+                    app:icon="@android:drawable/ic_menu_mylocation"
+                    app:iconPadding="8dp"
+                    app:iconTint="@color/pe_text_secondary"
+                    app:rippleColor="@color/pe_primary_light" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- CARD: TEMPO -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/ParkEasy.Card"
+            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
 
-        <EditText
-            android:id="@+id/etNotes"
-            android:hint="Notas (opcional)"
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/ParkEasy.SectionTitle"
+                    android:text="Tempo de estacionamento"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    style="@style/ParkEasy.BodyLabel"
+                    android:text="Escolhe um atalho rápido ou define um valor personalizado (minutos)."
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:singleSelection="false"
+                    app:singleLine="true"
+                    app:chipSpacingHorizontal="8dp">
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btn30"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="30 min"
+                        android:textColor="@color/pe_text_secondary"
+                        app:chipBackgroundColor="@color/pe_surface_alt" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btn60"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="60 min"
+                        android:textColor="@color/pe_text_secondary"
+                        app:chipBackgroundColor="@color/pe_surface_alt" />
+
+                    <com.google.android.material.chip.Chip
+                        android:id="@+id/btn120"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="120 min"
+                        android:textColor="@color/pe_text_secondary"
+                        app:chipBackgroundColor="@color/pe_surface_alt" />
+                </com.google.android.material.chip.ChipGroup>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/pe_divider">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etCustomMinutes"
+                        android:hint="Tempo personalizado (minutos)"
+                        android:inputType="number"
+                        android:textColor="@color/pe_text_primary"
+                        android:textColorHint="@color/pe_text_secondary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/pe_divider">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etOffset"
+                        android:hint="Avisar antes de (minutos)"
+                        android:inputType="number"
+                        android:textColor="@color/pe_text_primary"
+                        android:textColorHint="@color/pe_text_secondary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- CARD: NOTAS -->
+        <com.google.android.material.card.MaterialCardView
+            style="@style/ParkEasy.Card"
+            android:layout_marginTop="16dp"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            android:layout_height="wrap_content">
 
-        <Button
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="16dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    style="@style/ParkEasy.SectionTitle"
+                    android:text="Notas"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+
+                <TextView
+                    style="@style/ParkEasy.BodyLabel"
+                    android:text="Exemplo: piso, número do lugar, cor do pilar, etc."
+                    android:layout_marginTop="4dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content" />
+
+                <com.google.android.material.textfield.TextInputLayout
+                    android:layout_marginTop="12dp"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:boxBackgroundMode="outline"
+                    app:boxStrokeColor="@color/pe_divider">
+
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etNotes"
+                        android:hint="Notas (opcional)"
+                        android:inputType="textMultiLine"
+                        android:minLines="2"
+                        android:maxLines="4"
+                        android:textColor="@color/pe_text_primary"
+                        android:textColorHint="@color/pe_text_secondary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+
+        <!-- BOTÃO GUARDAR -->
+        <com.google.android.material.button.MaterialButton
             android:id="@+id/btnSave"
+            style="@style/ParkEasy.PrimaryButton"
+            android:layout_marginTop="24dp"
             android:text="Guardar sessão"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+            app:icon="@android:drawable/ic_menu_save"
+            app:iconTint="@color/white"
+            app:iconPadding="8dp"
+            app:rippleColor="@color/pe_primary_light" />
 
+        <!-- HISTÓRICO -->
         <TextView
             android:text="Últimas sessões"
             android:textStyle="bold"
-            android:paddingTop="16dp"
+            android:textSize="16sp"
+            android:textColor="@color/pe_text_primary"
+            android:paddingTop="24dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rvHistory"
+            android:layout_marginTop="8dp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
+
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="32dp" />
 
     </LinearLayout>
 </ScrollView>

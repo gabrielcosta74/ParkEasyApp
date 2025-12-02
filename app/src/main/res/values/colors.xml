@@ -1,5 +1,27 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Base colors -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
+
+    <!-- Brand / accent (dark, profissional) -->
+    <color name="pe_primary">#3B82F6</color>        <!-- Azul principal -->
+    <color name="pe_primary_dark">#1D4ED8</color>
+    <color name="pe_primary_light">#60A5FA</color>
+    <color name="pe_secondary">#22C55E</color>      <!-- Verde suave -->
+
+    <!-- Backgrounds -->
+    <color name="pe_background">#020617</color>         <!-- Fundo geral -->
+    <color name="pe_surface">#020617</color>            <!-- Superfície base -->
+    <color name="pe_surface_elevated">#0B1120</color>   <!-- Cards -->
+    <color name="pe_surface_alt">#111827</color>        <!-- Inputs, chips -->
+
+    <!-- Textos -->
+    <color name="pe_text_primary">#F9FAFB</color>       <!-- Quase branco -->
+    <color name="pe_text_secondary">#9CA3AF</color>     <!-- Cinzento claro -->
+    <color name="pe_divider">#1F2937</color>
+
+    <!-- Estados -->
+    <color name="pe_success">#22C55E</color>
+    <color name="pe_error">#EF4444</color>
 </resources>

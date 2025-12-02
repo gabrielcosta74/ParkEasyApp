@@ -14,10 +14,9 @@
         android:label="ParkEasy"
         android:icon="@mipmap/ic_launcher"
         android:roundIcon="@mipmap/ic_launcher_round"
-        android:supportsRtl="true"
-        android:theme="@style/Theme.Material3.DayNight.NoActionBar">
+        android:theme="@style/Theme.ParkEasyApp">
 
-        <activity
+    <activity
             android:name=".ui.AuthActivity"
             android:exported="true">
             <intent-filter>
@@ -34,6 +33,10 @@
         <!-- ❗️Sem intent-filter; só abre depois de logar -->
         <activity
             android:name=".ui.MainActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ui.ProfileActivity"
             android:exported="false" />
 
         <!-- (resto igual) -->

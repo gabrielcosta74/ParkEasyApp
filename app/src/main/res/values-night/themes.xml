@@ -1,7 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- Base application theme. -->
     <style name="Base.Theme.ParkEasyApp" parent="Theme.Material3.DayNight.NoActionBar">
-        <!-- Customize your dark theme here. -->
-        <!-- <item name="colorPrimary">@color/my_dark_primary</item> -->
+        <item name="colorPrimary">@color/pe_primary</item>
+        <item name="colorPrimaryVariant">@color/pe_primary_dark</item>
+        <item name="colorSecondary">@color/pe_secondary</item>
+
+        <item name="android:statusBarColor">@color/pe_background</item>
+        <item name="android:navigationBarColor">@color/pe_background</item>
+        <item name="android:windowBackground">@color/pe_background</item>
+
+        <item name="android:textColor">@color/pe_text_primary</item>
+
+        <item name="materialButtonStyle">@style/ParkEasy.PrimaryButton</item>
+        <item name="materialCardViewStyle">@style/ParkEasy.Card</item>
     </style>
 </resources>

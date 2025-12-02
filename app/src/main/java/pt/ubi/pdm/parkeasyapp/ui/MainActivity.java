@@ -135,14 +135,12 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.btn120).setOnClickListener(v -> etCustom.setText("120"));
         findViewById(R.id.btnSave).setOnClickListener(v -> saveSession());
 
-        // Logout
-        findViewById(R.id.btnLogout).setOnClickListener(v -> {
-            new LocalCache(this).clear(); // apaga tokens / drafts / userId
-            Intent i = new Intent(this, AuthActivity.class);
-            i.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        // Perfil
+        findViewById(R.id.btnProfile).setOnClickListener(v -> {
+            Intent i = new Intent(this, ProfileActivity.class);
             startActivity(i);
-            finish();
         });
+
 
         requestLocationPerms();
         loadHistory();
@@ -172,24 +170,44 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void useCurrentLocation() {
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION)
-                != PackageManager.PERMISSION_GRANTED) {
+        // Check if we have at least one type of location permission:
+        // FINE (precise) or COARSE (approximate).
+        boolean hasFineLocation = ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_FINE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED;
+
+        boolean hasCoarseLocation = ActivityCompat.checkSelfPermission(
+                this,
+                Manifest.permission.ACCESS_COARSE_LOCATION
+        ) == PackageManager.PERMISSION_GRANTED;
+
+        // If we do not have any location permission, we ask for it and stop here.
+        if (!hasFineLocation && !hasCoarseLocation) {
+            // Request location permissions again (FINE and COARSE).
             requestLocationPerms();
             return;
         }
+
+        // At this point we have at least one location permission (FINE or COARSE),
+        // so it is safe to ask the LocationHelper for the last known location.
         loc.getLastLocation(new LocationHelper.Callback() {
             @Override
             public void onLocation(Location l) {
+                // Fill the latitude EditText with the latitude from the Location object.
                 etLat.setText(String.valueOf(l.getLatitude()));
+                // Fill the longitude EditText with the longitude from the Location object.
                 etLng.setText(String.valueOf(l.getLongitude()));
             }
 
             @Override
             public void onError(Exception e) {
+                // If we still cannot get a location, show a simple error message to the user.
                 Toast.makeText(MainActivity.this, "Sem GPS", Toast.LENGTH_SHORT).show();
             }
         });
     }
+
 
     private void saveSession() {
         String sLat = etLat.getText().toString().trim();

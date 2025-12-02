@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:fillViewport="true"
-    android:background="#FAFAFA"
+    android:background="@color/pe_background"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -13,76 +13,102 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
-        <ImageView
-            android:src="@mipmap/ic_launcher_round"
-            android:contentDescription="@string/app_name"
-            android:layout_width="72dp"
-            android:layout_height="72dp"
+        <!-- App logo / header -->
+        <TextView
+            android:text="ParkEasy"
+            android:textSize="28sp"
+            android:textStyle="bold"
+            android:textColor="@color/pe_primary"
+            android:letterSpacing="0.05"
             android:layout_marginTop="24dp"
-            android:layout_marginBottom="12dp"/>
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
 
         <TextView
-            android:text="Entrar no ParkEasy"
-            android:textSize="22sp"
-            android:textStyle="bold"
-            android:layout_marginBottom="16dp"
-            android:layout_width="wrap_content"
+            android:text="Entra para guardares os teus estacionamentos."
+            android:textSize="14sp"
+            android:textColor="@color/pe_text_secondary"
+            android:gravity="center"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="24dp"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilEmail"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        <com.google.android.material.card.MaterialCardView
+            style="@style/ParkEasy.Card"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Email"
-            android:layout_marginTop="8dp">
+            android:layout_height="wrap_content">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etEmail"
-                android:inputType="textEmailAddress"
-                android:singleLine="true"
+            <LinearLayout
+                android:orientation="vertical"
+                android:padding="16dp"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                android:layout_height="wrap_content">
 
-        <com.google.android.material.textfield.TextInputLayout
-            android:id="@+id/tilPassword"
-            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:hint="Password"
-            android:layout_marginTop="12dp"
-            app:endIconMode="password_toggle">
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilEmail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    app:hintEnabled="true">
 
-            <com.google.android.material.textfield.TextInputEditText
-                android:id="@+id/etPassword"
-                android:inputType="textPassword"
-                android:singleLine="true"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"/>
-        </com.google.android.material.textfield.TextInputLayout>
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etEmail"
+                        android:hint="Email"
+                        android:inputType="textEmailAddress"
+                        android:singleLine="true"
+                        android:textColor="@color/pe_text_primary"
+                        android:textColorHint="@color/pe_text_secondary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
 
-        <com.google.android.material.button.MaterialButton
-            android:id="@+id/btnLogin"
-            android:text="Entrar"
-            android:layout_marginTop="16dp"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" />
+                <com.google.android.material.textfield.TextInputLayout
+                    android:id="@+id/tilPassword"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:passwordToggleEnabled="true">
 
-        <ProgressBar
-            android:id="@+id/progress"
-            style="?android:attr/progressBarStyle"
-            android:visibility="gone"
-            android:layout_marginTop="12dp"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content" />
+                    <com.google.android.material.textfield.TextInputEditText
+                        android:id="@+id/etPassword"
+                        android:hint="Palavra-passe"
+                        android:inputType="textPassword"
+                        android:singleLine="true"
+                        android:textColor="@color/pe_text_primary"
+                        android:textColorHint="@color/pe_text_secondary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content" />
+                </com.google.android.material.textfield.TextInputLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnLogin"
+                    style="@style/ParkEasy.PrimaryButton"
+                    android:layout_marginTop="20dp"
+                    android:text="Iniciar sessão"
+                    app:icon="@android:drawable/ic_lock_lock"
+                    app:iconTint="@color/white"
+                    app:iconPadding="8dp"
+                    app:rippleColor="@color/pe_primary_light" />
+
+                <ProgressBar
+                    android:id="@+id/progress"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_marginTop="12dp"
+                    android:visibility="gone"
+                    android:layout_gravity="center_horizontal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
         <TextView
             android:id="@+id/tvGoRegister"
             android:text="Não tens conta? Registar"
-            android:textColor="#1565C0"
+            android:textSize="14sp"
+            android:textColor="@color/pe_primary"
             android:padding="8dp"
-            android:layout_marginTop="12dp"
+            android:layout_marginTop="16dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
 
